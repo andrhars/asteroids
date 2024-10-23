@@ -4,6 +4,7 @@
 import pygame
 
 from constants import *
+from player import *
 
 
 def main():
@@ -11,6 +12,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
+
+    player = Player(x=SCREEN_WIDTH / 2, y=SCREEN_HEIGHT / 2)
 
     print("Starting asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -22,6 +25,8 @@ def main():
                 return
 
         screen.fill("black")
+        player.draw(screen)
+        player.update(dt)
         pygame.display.flip()
 
         # limit framerate to 60 FPS
